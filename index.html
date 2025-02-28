@@ -18,10 +18,11 @@
     <link href="./static/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-      html, body {
-        height: 100%;
-        margin: 0;
+    html, body {
+        max-width: 100%; /* Allow shrinking */
+        overflow-x: auto; /* Allow scrolling if needed */
     }
+  
     </style>
 
     <style>
@@ -74,16 +75,17 @@
   <body>
 <main>
   
-  <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+  <div class="d-flex flex-column flex-shrink-0 p-1 text-white bg-dark" style="width: 280px;">
     <!--a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
       <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
       <span class="fs-4">Retour</span>
     </a-->
     <!-- <a href="/logout" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"> -->
     <a>
-      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+      <svg class="bi me-2" width="20" height="32"><use xlink:href="#bootstrap"/></svg>
       <!-- <span class="fs-4">Deconnexion</span> -->
       <span class="fs-4">Thèmes</span>
+      <!-- <span class="small">Thèmes</span> -->
     </a>
     <hr class="border">
     <ul class="nav nav-pills flex-column mb-auto">
@@ -95,8 +97,10 @@
       </li> -->
       <li>
         <a href="#" class="nav-link text-white" onclick="toggleChute3D();">
-          <svg class="bi me-2" width="16" height="16" ><use xlink:href="#chute3D"/></svg>
-          Chute 3D
+          <svg class="bi me-2" width="8" height="16" ><use xlink:href="#chute3D"/></svg>
+          <!-- <svg class="small" width="8" height="16" ><use xlink:href="#chute3D"/></svg> -->
+          <!-- Chute 3D -->
+          <span class="small">Chute 3D</span>
         </a>
       </li>
       <li>
@@ -112,9 +116,9 @@
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link text-white" onclick="toggleSectionFA();">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#false_alarms"/></svg>
-          Fausses alarmes
+        <a href="#" class="nav-link text-white" onclick="toggleParcours();">
+          <svg class="bi me-2" width="8" height="16"><use xlink:href="#parcours"/></svg>
+          <span class="small">Parcours</span>
         </a>
       </li>
     </ul>
@@ -126,122 +130,37 @@
 
   <div class="list-group list-group-flush border-bottom scrollarea">
 
-    <!-- <div>
-      <button class="button" id="start">Start</button>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script>
-        let button = document.getElementById("start")
-        button.addEventListener('click', function(ev) {
-            getresult();
-            ev.preventDefault();
-        }, false); 
-        function toggleSectionStatus() {
-          var section = document.getElementById("section_status");
-          if (section.style.display === "none") { section.style.display = "block"; } 
-          else { section.style.display = "none";  }
-          document.getElementById("section_chute3d").style.display="none";
-          document.getElementById("section_fall").style.display="none";
-          document.getElementById("section_warn").style.display="none";
-          document.getElementById("section_fa").style.display="none";
-        }
-        // TODO last_alive_v()
-        // getResultList was here before now replaced by launchRefreshList
-    </script> -->
-
-    <!-- <div id="last_fall" >
-      <hr>
-      <h2>Dernière chute</h2>
-      <br>
-      <img id="image">
-      <div>
-          <label for="laststamp">Date de la chute</label>
-          <input size="60" type="text" placeholder="" id="laststamp">
-      </div>
-    </div> -->
-
-    <!-- <div id="section_status" class="hidden-section" style="display:none" >
-      <hr>
-      <h2>Statuts</h2>
-      <br>
-
-      <div class="container">
-        <label>Horloge outil:</label> 
-        <input type="text" placeholder="currentTime" id="currentTime" readonly="readonly" disabled size=60 >
-      </div>
-      <div class="container">
-        <label>Horloge serveur:</label> 
-        <input type="text" placeholder="lastServerTime" id="lastServerTime" readonly="readonly" disabled size=60 >
-      </div>
-      <div class="container">
-        <label>Statut serveur:</label> 
-        <p id="serverStatusWarning"> &#9888;</p>
-        <p class="hidden" id="serverStatusOk"> &#9989;</p>
-        <input type="text" placeholder="deltaTime" id="deltaTime" readonly="readonly" disabled size=60 >
-      </div>
-      <div class="container">
-        <label>Statut capteur:</label> 
-        <p id="sensorStatusWarning"> &#9888;</p>
-        <p class="hidden" id="sensorStatusOk"> &#9989;</p>
-        <input type="text" placeholder="lastAliveTime" id="lastAliveTime" readonly="readonly" disabled size=60 >
-      </div> 
-    </div> -->
-
     <div id="section_chute3d" class="hidden-section" style="display:none" >
       <hr>
       <h2>Chute 3D</h2>
       <br>
 
-      <video width="640" height="360" controls>
+      <figure>
+        <figcaption>Interface de monitoring de chutes</figcaption>
+        <img src="/static/images/chute3d_interface.JPG" alt="Fall3D interface" width="640">
+      </figure>
+
+      <div class="border-top mx-auto my-4" style="width: 100%; height: 20px; background-color: red;"></div>
+
+      <figure>
+        <figcaption>System de detection de chutes</figcaption>
+        <img src="/static/images/chute3d_system.JPG" alt="Fall3D system" width="640">
+      </figure>
+
+      <div class="border-top mx-auto my-4" style="width: 100%; height: 20px; background-color: red;"></div>
+
+      <video width="320" height="240" controls>
       <source src="/static/videos/chute_maison.mp4" type="video/mp4">
           Your browser does not support the video tag.
       </video>
-      <video width="640" height="360" controls>
+
+      <div class="border-top mx-auto my-4" style="width: 100%; height: 20px; background-color: red;"></div>
+
+      <video width="320" height="240" controls>
       <source src="/static/videos/chute3D.mp4" type="video/mp4">
           Your browser does not support the video tag.
       </video>
 
-      <div>
-          <label for="identifier">identifiant de l'appareil:</label>
-          <input type="text" placeholder="identifier" id="identifier">
-      </div>
-      <div>
-        <label for="deltaAliveThresholdSecond">serveur-client intervalle (sec)</label>
-        <input type="text" placeholder="deltaAliveThresholdSecond" id="deltaAliveThresholdSecond">
-      </div>
-      <div>
-          <label for="intervalSec">connexion intervalle (sec):</label>
-          <input type="text" placeholder="intervalSec" id="intervalSec">
-          <!--button class="button" id="saveParam" >Enregistrer</button-->
-      </div>
-      <div>
-        <h6>Options d'affichage</h6>
-        <div class="nav-item-checkbox last-item-section">
-          <input type="checkbox" id="toggle_depth" />
-          <label class="form-check-label" for="toggle_depth">3D (carte de profondeurs)</label>
-        </div>
-        <div class="nav-item-checkbox">
-          <input type="checkbox" checked id="toggle_depth_blobs" />
-          <label class="form-check-label" for="toggle_depth_blobs">3D + resultats niveau 1</label>
-        </div>
-        <div class="nav-item-checkbox">
-          <input type="checkbox" id="toggle_colour" />
-          <label class="form-check-label" for="toggle_colour">Couleurs</label>
-        </div>
-        <div class="nav-item-checkbox">
-          <input type="checkbox" checked id="toggle_depth_fallanalysis" />
-          <label class="form-check-label" for="toggle_depth_fallanalysis">3D + resultats niveau 2</label>
-        </div>
-        <div class="nav-item-checkbox">
-          <input type="checkbox" id="toggle_mmobjects" />
-          <label class="form-check-label" for="toggle_mmobjects">IA (optionnel)</label>
-        </div>
-        <div class="nav-item-checkbox">
-          <input type="checkbox" checked id="toggle_extra" />
-          <label class="form-check-label" for="toggle_extra">Extra debug image</label>
-        </div>
-        <button class="button" id="refreshResult" >Rafraichir tout de suite</button>
-      </div>
       <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
       <script>
         function toggleChute3D() {
@@ -251,7 +170,7 @@
           document.getElementById("section_status").style.display="none";
           document.getElementById("section_fall").style.display="none";
           document.getElementById("section_warn").style.display="none";
-          document.getElementById("section_fa").style.display="none";
+          document.getElementById("section_parcours").style.display="none";
         }
       </script>
     </div>
@@ -288,19 +207,85 @@
       <img id="processedimage_warn">
   </div>
   <!--a class="nav-link;hidden-section" href="#section_fa" id="section_fa" style="display:none"-->
-  <div id="section_fa" class="hidden-section" style="display:none" href="#section_fa">
+  <div id="section_parcours" class="hidden-section" style="display:none" href="#section_parcours">
     <hr>
-    <h2>Fausses alarmes</h2>
+    <h2>Parcours</h2>
     <br>
-    <div>
-        <label for="selectListFA">Selectionner une fausse alarme:</label>
-        <select id="selectListFA"></select>
-    </div>
-    <div>
-      <p>Element selectionné: <span id="selectedItemFA"></span></p>
-    </div>
-    <text id="resultListProcessedFA" text="resultListProcessedFA here">
-    <img id="processedimage_fa">
+
+    <img src="/static/images/perso_presentation.jpg" width="480">
+
+    <img src="/static/images/perso_images.JPG" width="480">
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+      <script>
+        function toggleParcours() {
+          var section = document.getElementById("section_parcours");
+          if (section.style.display === "none") { section.style.display = "block"; } 
+          else { section.style.display = "none";  }
+          document.getElementById("section_chute3d").style.display="none";
+          document.getElementById("section_status").style.display="none";
+          document.getElementById("section_fall").style.display="none";
+          document.getElementById("section_warn").style.display="none";
+        }
+      </script>
+
+      
+
+      <!-- body_part_feature_extraction.JPG  monitoring_gerhome.JPG  people_reid2.JPG           people_tracking_torino.JPG    perso_presentation.jpg
+feature_for_people_detection.JPG  people_id_airport.JPG   people_tracking_rome.JPG   people_tracking_video_id.JPG  zone_extraction_rome.JPG
+group_activity.JPG                people_reid.JPG         people_tracking_rome2.JPG  perso_images.JPG -->
+    
+
+      <h5>Education</h5>
+      <ul>
+        <li>Doctorat (PhD) à Londres (2000-2005): étude mathématique mouvement dans vidéo and applications en vidéo surveillance</li>
+        <li>Maitrise (MSc) à Londres (2000): Imaging and Digital Image Processing</li>
+        <li>Bachelor/License à Londres (1997-1999): Londres: Physique, Chimie, Electronique</li>
+        <li>DUT à Caen (1995-1997): Physique, Chimie, Electronique</li>
+      </ul>
+
+      <h5>Supervision</h5>
+      <ul>
+        <li>programmation (2001-2002)</li>
+        <li>stagiaires, d’étudiants en maitrise et de doctorants (2006-2011): vision 2D/3D, traitement images …</li>
+        <li>formation techniciens (projets Européens et Nationaux)</li>
+      </ul>
+
+      <h5>Publications</h5>
+      <ul>
+       <li>Délivrables, rapports, présentations, papiers (AVSS, ICIP et BMVC … voir liste sur CV)</li>
+      </ul>
+    
+      <h5>Ingénieur et développeur R&D - Link Care Services (2011-2016)</h5>
+      <ul>
+       <li>Chute par caméras de surveillance </li>
+       <li>Chute par capteurs de profondeur (carte 3D/RGBD). </li>
+      </ul>
+
+      <h5>Projets Européens</h5>
+      <ul>
+        <li>«Dem@Care»: suivi de personnes et analyse activités 2D/3D dans réseau de caméras </li>
+        <li>«Caretaker» : monitoring people activity in public areas</li>
+        <li>Projet ANR «VideoId». </li>
+        <li>Collaboration avec universités et entreprises privées</li>
+        <li>Intégration systèmes sur plusieurs sites en Europe (RATP, métro Turin, Rome et Londres).</li>
+      </ul>
+      
+      <h5>Ingénieur et développeur R&D - Nodeus</h5>
+      <ul>
+        <li>fusion de capteurs pour le maintien à domicile. </li>
+          <li>Dévelopement prototype bas-cout (< 10 Euros) composé d'une camera (non fifo) 
+          basse consommation (déclenchée par un capteur de mouvement avec microcontrôleur et module Bluetooth ou Wifi)
+        </li>Fusion de deux de ces cameras dans une même pièce pour estimer la position 3D relative de la personne et estimer sa position
+        debout, assise ou au sol (ou non visible comme par exemple en case d'une chute derrière un meuble vu en premier plan par les cameras).</li> 
+      </ul>
+
+      <h5>Formations</h5>
+      <ul>
+        <li>Deep learning school (http://univ-cotedazur.fr/events/deep-learning-schoolProgrammation) organisé par Nvidia. </li>
+        <li>Machine Learning de Stanford (Andrew Ng), </li>
+        <li>Google Deep Learning, de Deep Traffic de MIT, des convolutional neural network de Microsoft et Stanford. </li>
+    </ul>
   </div>
   </div>
 </main>
