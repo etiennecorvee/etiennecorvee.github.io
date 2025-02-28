@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Template From Bootstrap Project">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>Detection de chute</title>
 
     <!--link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sidebars/"-->
@@ -78,22 +79,24 @@
       <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
       <span class="fs-4">Retour</span>
     </a-->
-    <a href="/logout" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <!-- <a href="/logout" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"> -->
+    <a>
       <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-      <span class="fs-4">Deconnexion</span>
+      <!-- <span class="fs-4">Deconnexion</span> -->
+      <span class="fs-4">Thèmes</span>
     </a>
     <hr class="border">
     <ul class="nav nav-pills flex-column mb-auto">
-      <li>
+      <!-- <li>
         <a id="nav_status" href="#" class="nav-link text-white" onclick="toggleSectionStatus();">
           <svg class="bi me-2" width="16" height="16" ><use xlink:href="#status"/></svg>
           <text>Statut</text>
         </a>
-      </li>
+      </li> -->
       <li>
-        <a href="#" class="nav-link text-white" onclick="toggleSectionParam();">
-          <svg class="bi me-2" width="16" height="16" ><use xlink:href="#parameters"/></svg>
-          Paramètres
+        <a href="#" class="nav-link text-white" onclick="toggleChute3D();">
+          <svg class="bi me-2" width="16" height="16" ><use xlink:href="#chute3D"/></svg>
+          Chute 3D
         </a>
       </li>
       <li>
@@ -123,7 +126,7 @@
 
   <div class="list-group list-group-flush border-bottom scrollarea">
 
-    <div>
+    <!-- <div>
       <button class="button" id="start">Start</button>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -137,16 +140,16 @@
           var section = document.getElementById("section_status");
           if (section.style.display === "none") { section.style.display = "block"; } 
           else { section.style.display = "none";  }
-          document.getElementById("section_param").style.display="none";
+          document.getElementById("section_chute3d").style.display="none";
           document.getElementById("section_fall").style.display="none";
           document.getElementById("section_warn").style.display="none";
           document.getElementById("section_fa").style.display="none";
         }
         // TODO last_alive_v()
         // getResultList was here before now replaced by launchRefreshList
-    </script>
+    </script> -->
 
-    <div id="last_fall" >
+    <!-- <div id="last_fall" >
       <hr>
       <h2>Dernière chute</h2>
       <br>
@@ -155,11 +158,9 @@
           <label for="laststamp">Date de la chute</label>
           <input size="60" type="text" placeholder="" id="laststamp">
       </div>
-    </div>
+    </div> -->
 
-    <div id="section_status" class="hidden-section" style="display:none" >
-    <!--div class="section" style="text-align:center"-->
-
+    <!-- <div id="section_status" class="hidden-section" style="display:none" >
       <hr>
       <h2>Statuts</h2>
       <br>
@@ -184,12 +185,22 @@
         <p class="hidden" id="sensorStatusOk"> &#9989;</p>
         <input type="text" placeholder="lastAliveTime" id="lastAliveTime" readonly="readonly" disabled size=60 >
       </div> 
-    </div>
+    </div> -->
 
-    <div id="section_param" class="hidden-section" style="display:none" >
+    <div id="section_chute3d" class="hidden-section" style="display:none" >
       <hr>
-      <h2>Paramètres</h2>
+      <h2>Chute 3D</h2>
       <br>
+
+      <video width="640" height="360" controls>
+      <source src="/static/videos/chute_maison.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video>
+      <video width="640" height="360" controls>
+      <source src="/static/videos/chute3D.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video>
+
       <div>
           <label for="identifier">identifiant de l'appareil:</label>
           <input type="text" placeholder="identifier" id="identifier">
@@ -233,8 +244,8 @@
       </div>
       <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
       <script>
-        function toggleSectionParam() {
-          var section = document.getElementById("section_param");
+        function toggleChute3D() {
+          var section = document.getElementById("section_chute3d");
           if (section.style.display === "none") { section.style.display = "block"; } 
           else { section.style.display = "none";  }
           document.getElementById("section_status").style.display="none";
