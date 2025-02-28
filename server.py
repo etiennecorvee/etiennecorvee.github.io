@@ -1,0 +1,26 @@
+# from flask import Flask, send_from_directory
+from flask import Flask, render_template
+
+# app = Flask(__name__, static_folder=".")
+app = Flask(__name__)
+
+@app.route("/")
+def serve_index():
+    # return send_from_directory("templates", "index-old.html")
+    return render_template("index.html")
+
+# @app.route("/<path:filename>")
+# def serve_static(filename):
+#     return send_from_directory(".", filename, mimetype=get_mime_type(filename))
+
+# def get_mime_type(filename):
+#     if filename.endswith(".mp4"):
+#         return "video/mp4"
+#     elif filename.endswith(".webm"):
+#         return "video/webm"
+#     elif filename.endswith(".ogg"):
+#         return "video/ogg"
+#     return None  # Let Flask handle other files normally
+
+if __name__ == "__main__":
+    app.run(debug=True)
