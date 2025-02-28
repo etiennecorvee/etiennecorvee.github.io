@@ -111,9 +111,10 @@
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link text-white" onclick="toggleSectionWarn();">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#warnings"/></svg>
-          Warnings
+        <a href="#" class="nav-link text-white" onclick="toggleProjects();">
+          <svg class="bi me-2" width="8" height="16"><use xlink:href="#projects"/></svg>
+          <!-- Projets UE -->
+          <span class="small">Projets UE</span>
         </a>
       </li>
       <li>
@@ -172,7 +173,7 @@
           else { section.style.display = "none";  }
           document.getElementById("section_status").style.display="none";
           document.getElementById("section_sensors").style.display="none";
-          document.getElementById("section_warn").style.display="none";
+          document.getElementById("section_projects").style.display="none";
           document.getElementById("section_parcours").style.display="none";
         }
       </script>
@@ -213,27 +214,72 @@
           else { section.style.display = "none";  }
           document.getElementById("section_status").style.display="none";
           document.getElementById("section_chute3d").style.display="none";
-          document.getElementById("section_warn").style.display="none";
+          document.getElementById("section_projects").style.display="none";
           document.getElementById("section_parcours").style.display="none";
         }
       </script>
 
     </div>
 
-    <div id="section_warn" class="hidden-section" style="display:none" >
+    <div id="section_projects" class="hidden-section" style="display:none" >
       <hr>
-      <h2>Warnings</h2>
+      <h2>Projets UE</h2>
       <br>
-      <div>
-          <label for="selectListWarn">Selectionner une detection:</label>
-          <select id="selectListWarn"></select>
-      </div>
-      <div>
-        <p>Element selectionné: <span id="selectedItemWarn"></span></p>
-      </div>
-      <text id="resultListProcessedWarn" text="resultListProcessedWarn here">
-      <img id="processedimage_warn">
-  </div>
+
+      <figure>
+        <figcaption>Gerhome project: monitoring de personnes</figcaption>
+        <img src="/static/images/monitoring_gerhome.JPG" alt="monitoring_gerhome" width="640">
+      </figure>
+
+      <div class="border-top mx-auto my-4" style="width: 100%; height: 20px; background-color: red;"></div>
+
+      <figure>
+        <figcaption>VideoId project: suivi et re-identification</figcaption>
+        <img src="/static/images/people_reid.JPG" alt="people_reid" width="310">
+        <img src="/static/images/people_reid2.JPG" alt="people_reid2" width="310">
+      </figure>
+      <figure>
+        <img src="/static/images/people_tracking_video_id.JPG" alt="people_tracking_video_id" width="310">
+        <img src="/static/images/people_id_airport.JPG" alt="people_id_airport" width="310">
+      </figure>
+
+      <div class="border-top mx-auto my-4" style="width: 100%; height: 20px; background-color: red;"></div>
+
+      <figure>
+        <figcaption>Detection de personnes: extraction de features pour apprentissage</figcaption>
+        <img src="/static/images/body_part_feature_extraction.JPG" alt="body_part_feature_extraction" width="160">
+        <img src="/static/images/feature_for_people_detection.JPG" alt="feature_for_people_detection" width="320">
+      </figure>
+
+      <div class="border-top mx-auto my-4" style="width: 100%; height: 20px; background-color: red;"></div>
+
+      <figure>
+        <figcaption>Activités de personnes dans métro Turin, Rome et aéroport</figcaption>
+        <img src="/static/images/people_tracking_torino.JPG" alt="people_tracking_torino" width="310">
+        <img src="/static/images/people_tracking_rome.JPG" alt="people_tracking_rome" width="310">
+      </figure>
+      <figure>
+        <img src="/static/images/people_tracking_rome2.JPG" alt="people_tracking_rome" width="310">
+        <img src="/static/images/zone_extraction_rome.JPG" alt="zone_extraction_rome" width="310">
+      </figure>
+      <figure>
+        <img src="/static/images/group_activity.JPG" alt="group_activity" width="319">
+      </figure>
+
+      <script>
+        function toggleProjects() {
+          var section = document.getElementById("section_projects");
+          if (section.style.display === "none") { section.style.display = "block"; } 
+          else { section.style.display = "none";  }
+          document.getElementById("section_status").style.display="none";
+          document.getElementById("section_chute3d").style.display="none";
+          document.getElementById("section_sensors").style.display="none";
+          document.getElementById("section_parcours").style.display="none";
+        }
+      </script>
+
+
+    </div>
   <!--a class="nav-link;hidden-section" href="#section_fa" id="section_fa" style="display:none"-->
   <div id="section_parcours" class="hidden-section" style="display:none" href="#section_parcours">
     <hr>
@@ -253,16 +299,9 @@
           document.getElementById("section_chute3d").style.display="none";
           document.getElementById("section_status").style.display="none";
           document.getElementById("section_sensors").style.display="none";
-          document.getElementById("section_warn").style.display="none";
+          document.getElementById("section_projects").style.display="none";
         }
       </script>
-
-      
-
-      <!-- body_part_feature_extraction.JPG  monitoring_gerhome.JPG  people_reid2.JPG           people_tracking_torino.JPG    perso_presentation.jpg
-feature_for_people_detection.JPG  people_id_airport.JPG   people_tracking_rome.JPG   people_tracking_video_id.JPG  zone_extraction_rome.JPG
-group_activity.JPG                people_reid.JPG         people_tracking_rome2.JPG  perso_images.JPG -->
-    
 
       <h5>Education</h5>
       <ul>
