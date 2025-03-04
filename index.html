@@ -20,6 +20,7 @@
     html, body {
         max-width: 100%; /* Allow shrinking */
         overflow-x: auto; /* Allow scrolling if needed */
+        touch-action: manipulation; /* Allows pinch zooming */
     }
   
     </style>
@@ -50,7 +51,8 @@
       }
       /* Use Flexbox to align items in a row */
       .container {
-        display: flex;
+        max-width: 100% !important; /* Prevents Bootstrap from fixing width */
+        /*display: flex;*/
         align-items: center; /* Optional: Align vertically centered */
       }
     </style>
